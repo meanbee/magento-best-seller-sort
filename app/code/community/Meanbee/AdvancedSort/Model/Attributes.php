@@ -10,7 +10,7 @@ class Meanbee_AdvancedSort_Model_Attributes extends Mage_Core_Model_Abstract
         $resource = Mage::getResourceSingleton('catalog/product');
 
         /** @var Meanbee_AdvancedSort_Helper_Data $helper */
-        $helper = Mage::helper('Meanbee_AdvancedSort');
+        $helper = Mage::helper('meanbee_advancedsort');
 
         /**
          * We need to ensure all product have zero-values first
