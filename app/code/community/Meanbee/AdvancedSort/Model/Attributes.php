@@ -34,8 +34,8 @@ class Meanbee_AdvancedSort_Model_Attributes extends Mage_Core_Model_Abstract
         $productCollection = Mage::getResourceModel('catalog/product_collection');
 
         foreach($productCollection as $product) {
-            $product->setData($helper::ATTRIBUTE_NAME_QTY_ORDERED, 0);
-            $resource->saveAttribute($product, $helper::ATTRIBUTE_NAME_QTY_ORDERED);
+            $product->setData(Meanbee_AdvancedSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED, 0);
+            $resource->saveAttribute($product, Meanbee_AdvancedSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
         }
 
         /**
@@ -49,11 +49,11 @@ class Meanbee_AdvancedSort_Model_Attributes extends Mage_Core_Model_Abstract
               ->addOrderedQty($this->_getFromDate($helper->getQtyOrderedAge()), $this->_getToday());
 
         foreach($soldCollection as $product) {
-            $product->setData($helper::ATTRIBUTE_NAME_QTY_ORDERED, -((int)$product->getData('ordered_qty')));
-            $resource->saveAttribute($product, $helper::ATTRIBUTE_NAME_QTY_ORDERED);
+            $product->setData(Meanbee_AdvancedSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED, -((int)$product->getData('ordered_qty')));
+            $resource->saveAttribute($product, Meanbee_AdvancedSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
         }
 
-        $this->_updateFlatProductTable($helper::ATTRIBUTE_NAME_QTY_ORDERED);
+        $this->_updateFlatProductTable(Meanbee_AdvancedSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
 
         return $this;
     }
@@ -67,6 +67,7 @@ class Meanbee_AdvancedSort_Model_Attributes extends Mage_Core_Model_Abstract
     {
         $indexer = Mage::getResourceModel('catalog/product_flat_indexer');
         $attribute = $indexer->getAttribute($attributeCode);
+
         foreach (Mage::app()->getStores() as $store) {
             $indexer->updateAttribute($attribute, $store->getId());
         }
@@ -81,7 +82,7 @@ class Meanbee_AdvancedSort_Model_Attributes extends Mage_Core_Model_Abstract
      */
     protected function _getFromDate($period)
     {
-        $date = new Zend_Date;
+        $date = new Zend_Date();
         $date->subDay($period);
         return $date->getIso();
     }
@@ -92,7 +93,7 @@ class Meanbee_AdvancedSort_Model_Attributes extends Mage_Core_Model_Abstract
      */
     protected function _getToday()
     {
-        $date = new Zend_Date;
+        $date = new Zend_Date();
         return $date->getIso();
     }
 }
