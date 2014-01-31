@@ -4,7 +4,7 @@ $installer = $this;
 
 $installer->startSetup();
 
-$installer->addAttribute('catalog_product', 'qty_ordered', array(
+$installer->addAttribute('catalog_product', Meanbee_AdvancedSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED, array(
     'type'              => 'int',
     'backend'           => '',
     'frontend_class'    => 'validate-digits',
