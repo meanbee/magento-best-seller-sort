@@ -2,7 +2,7 @@
 
 class Meanbee_AdvancedSort_Helper_Data extends Mage_Core_Helper_Abstract
 {
-    const ATTRIBUTE_NAME_QTY_ORDERED = 'meanbee_advancedsort_sale_qty';
+    const ATTRIBUTE_NAME_QTY_ORDERED = 'popularity';
     const XML_PATH_QTY_ORDERED_AGE   = 'meanbee_advancedsort/general/qty_ordered_age';
 
     /**
