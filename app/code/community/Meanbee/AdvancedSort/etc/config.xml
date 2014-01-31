@@ -56,7 +56,7 @@
                     <cron_expr>0 2 * * *</cron_expr>
                 </schedule>
                 <run>
-                    <model>meanbee_advancedsort/attributes::update</model>
+                    <model>meanbee_advancedsort/attributes::updateAll</model>
                 </run>
             </meanbee_advanedsort_update>
         </jobs>
