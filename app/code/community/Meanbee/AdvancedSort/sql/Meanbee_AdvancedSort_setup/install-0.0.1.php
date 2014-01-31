@@ -22,5 +22,4 @@ $installer->addAttribute('catalog_product', 'qty_ordered', array(
     'used_for_sort_by'        => true
 ));
 
-
 $installer->endSetup();

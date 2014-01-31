@@ -62,8 +62,6 @@
         </jobs>
     </crontab>
 
-
-    <!-- DEFAULT CONFIG -->
     <default>
         <Meanbee_AdvancedSort>
             <general>

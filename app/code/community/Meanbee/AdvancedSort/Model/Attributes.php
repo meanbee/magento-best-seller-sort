@@ -9,10 +9,8 @@ class Meanbee_AdvancedSort_Model_Attributes extends Mage_Core_Model_Abstract
     {
 
         $this->updateQtyOrdered();
-
         return $this;
     }
-
 
     /**
      * @return $this
@@ -58,7 +56,6 @@ class Meanbee_AdvancedSort_Model_Attributes extends Mage_Core_Model_Abstract
         return $this;
     }
 
-
     /**
      * @param $attributeCode
      * @return $this
@@ -75,7 +72,6 @@ class Meanbee_AdvancedSort_Model_Attributes extends Mage_Core_Model_Abstract
         return $this;
     }
 
-
     /**
      * @param $period
      * @return string
@@ -86,7 +82,6 @@ class Meanbee_AdvancedSort_Model_Attributes extends Mage_Core_Model_Abstract
         $date->subDay($period);
         return $date->getIso();
     }
-
 
     /**
      * @return string
