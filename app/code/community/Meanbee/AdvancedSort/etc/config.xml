@@ -7,23 +7,23 @@
     </modules>
     <global>
         <models>
-            <Meanbee_AdvancedSort>
+            <meanbee_advancedsort>
                 <class>Meanbee_AdvancedSort_Model</class>
                 <resourceModel>Meanbee_AdvancedSort_resource</resourceModel>
-            </Meanbee_AdvancedSort>
+            </meanbee_advancedsort>
         </models>
         <resources>
-            <Meanbee_AdvancedSort_setup>
+            <meanbee_advancedsort_setup>
                 <setup>
                     <module>Meanbee_AdvancedSort</module>
                     <class>Mage_Catalog_Model_Resource_Setup</class>
                 </setup>
-            </Meanbee_AdvancedSort_setup>
+            </meanbee_advancedsort_setup>
         </resources>
         <helpers>
-            <Meanbee_AdvancedSort>
+            <meanbee_advancedsort>
                 <class>Meanbee_AdvancedSort_Helper</class>
-            </Meanbee_AdvancedSort>
+            </meanbee_advancedsort>
         </helpers>
     </global>
 
@@ -36,9 +36,9 @@
                             <children>
                                 <config>
                                     <children>
-                                        <Meanbee_AdvancedSort>
+                                        <meanbee_advancedsort>
                                             <title>Meanbee AdvancedSort Settings</title>
-                                        </Meanbee_AdvancedSort>
+                                        </meanbee_advancedsort>
                                     </children>
                                 </config>
                             </children>
@@ -51,22 +51,22 @@
 
     <crontab>
         <jobs>
-            <meanbee_advanedsort_update>
+            <meanbee_advancedsort_update>
                 <schedule>
                     <cron_expr>0 2 * * *</cron_expr>
                 </schedule>
                 <run>
                     <model>meanbee_advancedsort/attributes::updateAll</model>
                 </run>
-            </meanbee_advanedsort_update>
+            </meanbee_advancedsort_update>
         </jobs>
     </crontab>
 
     <default>
-        <Meanbee_AdvancedSort>
+        <meanbee_advancedsort>
             <general>
                 <qty_ordered_age>30</qty_ordered_age>
             </general>
-        </Meanbee_AdvancedSort>
+        </meanbee_advancedsort>
     </default>
 </config>

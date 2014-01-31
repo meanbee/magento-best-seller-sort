@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config>
     <sections>
-        <Meanbee_AdvancedSort translate="label" module="Meanbee_AdvancedSort">
+        <meanbee_advancedsort translate="label" module="meanbee_advancedsort">
             <label>Meanbee: Advanced Sort</label>
             <tab>catalog</tab>
             <frontend_type>text</frontend_type>
@@ -30,6 +30,6 @@
                     </fields>
                 </general>
             </groups>
-        </Meanbee_AdvancedSort>
+        </meanbee_advancedsort>
     </sections>
 </config>
