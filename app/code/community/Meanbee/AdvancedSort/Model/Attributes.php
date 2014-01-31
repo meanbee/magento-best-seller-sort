@@ -1,17 +1,6 @@
 <?php
 class Meanbee_AdvancedSort_Model_Attributes extends Mage_Core_Model_Abstract
 {
-
-    /**
-     * @return $this
-     */
-    public function updateAll()
-    {
-
-        $this->updateQtyOrdered();
-        return $this;
-    }
-
     /**
      * @return $this
      */
