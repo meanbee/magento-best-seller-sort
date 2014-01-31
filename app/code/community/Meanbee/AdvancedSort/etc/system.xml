@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <Meanbee_AdvancedSort translate="label" module="Meanbee_AdvancedSort">
+            <label>Meanbee: Advanced Sort</label>
+            <tab>catalog</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <qty_ordered_age translate="label">
+                            <label>Order Age (Days)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[When calculating quantity ordered for each product, how far back in order history should we go.]]></comment>
+                        </qty_ordered_age>
+                    </fields>
+                </general>
+            </groups>
+        </Meanbee_AdvancedSort>
+    </sections>
+</config>
