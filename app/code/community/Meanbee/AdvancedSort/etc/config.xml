@@ -25,8 +25,12 @@
                 <class>Meanbee_AdvancedSort_Helper</class>
             </meanbee_advancedsort>
         </helpers>
+        <blocks>
+            <meanbee_advancedsort>
+                <class>Meanbee_AdvancedSort_Block</class>
+            </meanbee_advancedsort>
+        </blocks>
     </global>
-
     <adminhtml>
         <acl>
             <resources>
@@ -62,6 +66,17 @@
         </jobs>
     </crontab>
 
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <advancedsort before="Mage_Adminhtml">Meanbee_AdvancedSort_Adminhtml</advancedsort>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
     <default>
         <meanbee_advancedsort>
             <general>
@@ -69,4 +84,13 @@
             </general>
         </meanbee_advancedsort>
     </default>
+
+    <phpunit>
+        <suite>
+            <modules>
+                <Meanbee_AdvancedSort />
+            </modules>
+        </suite>
+    </phpunit>
+
 </config>

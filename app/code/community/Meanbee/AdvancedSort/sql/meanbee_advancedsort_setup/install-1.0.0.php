@@ -22,4 +22,13 @@ $installer->addAttribute('catalog_product', Meanbee_AdvancedSort_Helper_Data::AT
     'used_for_sort_by'        => true
 ));
 
+// Schedule the task to run right away.
+$timestamp = Mage::getSingleton('core/date')->gmtTimestamp()+10;
+$schedule = Mage::getModel('cron/schedule');
+$schedule->setJobCode('meanbee_advancedsort_update')
+    ->setStatus(Mage_Cron_Model_Schedule::STATUS_PENDING)
+    ->setCreatedAt($timestamp)
+    ->setScheduledAt($timestamp)
+;
+$schedule->save();
 $installer->endSetup();
