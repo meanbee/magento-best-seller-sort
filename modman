@@ -1,2 +1,3 @@
 app/code/community/Meanbee/AdvancedSort app/code/community/Meanbee/AdvancedSort
+app/design/adminhtml/default/default/template/meanbee/advancedsort/ app/design/adminhtml/default/default/template/meanbee/advancedsort
 app/etc/modules/* app/etc/modules/
