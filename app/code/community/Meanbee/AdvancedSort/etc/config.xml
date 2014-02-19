@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Meanbee_AdvancedSort>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </Meanbee_AdvancedSort>
     </modules>
     <global>
@@ -30,6 +30,17 @@
                 <class>Meanbee_AdvancedSort_Block</class>
             </meanbee_advancedsort>
         </blocks>
+        <events>
+            <catalog_product_save_before>
+                <observers>
+                    <meanbee_advancedsort>
+                        <type>singleton</type>
+                        <class>Meanbee_AdvancedSort_Model_Observer</class>
+                        <method>catalogProductSaveBefore</method>
+                    </meanbee_advancedsort>
+                </observers>
+            </catalog_product_save_before>
+        </events>
     </global>
     <adminhtml>
         <acl>
