@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <meanbee_bestsellersort translate="label" module="meanbee_bestsellersort">
+            <label>Meanbee: Best Seller Sort</label>
+            <tab>catalog</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <qty_ordered_age translate="label">
+                            <label>Order Age (Days)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[When calculating quantity ordered for each product, how far back in order history should we go.]]></comment>
+                        </qty_ordered_age>
+                        <recalculate translate="label">
+                            <label>Recalculate Popular Products</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>meanbee_bestsellersort/adminhtml_system_config_form_button</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </recalculate>
+                    </fields>
+                </general>
+            </groups>
+        </meanbee_bestsellersort>
+    </sections>
+</config>

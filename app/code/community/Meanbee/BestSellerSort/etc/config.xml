@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Meanbee_BestSellerSort>
+            <version>1.0.1</version>
+        </Meanbee_BestSellerSort>
+    </modules>
+    <global>
+        <models>
+            <meanbee_bestsellersort>
+                <class>Meanbee_BestSellerSort_Model</class>
+                <resourceModel>Meanbee_BestSellerSort_resource</resourceModel>
+            </meanbee_bestsellersort>
+        </models>
+        <resources>
+            <meanbee_bestsellersort_setup>
+                <setup>
+                    <module>Meanbee_BestSellerSort</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+            </meanbee_bestsellersort_setup>
+        </resources>
+        <helpers>
+            <meanbee_bestsellersort>
+                <class>Meanbee_BestSellerSort_Helper</class>
+            </meanbee_bestsellersort>
+        </helpers>
+        <blocks>
+            <meanbee_bestsellersort>
+                <class>Meanbee_BestSellerSort_Block</class>
+            </meanbee_bestsellersort>
+        </blocks>
+        <events>
+            <catalog_product_save_before>
+                <observers>
+                    <meanbee_bestsellersort>
+                        <type>singleton</type>
+                        <class>Meanbee_BestSellerSort_Model_Observer</class>
+                        <method>catalogProductSaveBefore</method>
+                    </meanbee_bestsellersort>
+                </observers>
+            </catalog_product_save_before>
+        </events>
+    </global>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <meanbee_bestsellersort>
+                                            <title>Meanbee BestSellerSort Settings</title>
+                                        </meanbee_bestsellersort>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
+    <crontab>
+        <jobs>
+            <meanbee_bestsellersort_update>
+                <schedule>
+                    <cron_expr>0 2 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>meanbee_bestsellersort/cron::updateProductsWithQuantitiesOrdered</model>
+                </run>
+            </meanbee_bestsellersort_update>
+        </jobs>
+    </crontab>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <bestsellersort before="Mage_Adminhtml">Meanbee_BestSellerSort_Adminhtml</bestsellersort>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <default>
+        <meanbee_bestsellersort>
+            <general>
+                <qty_ordered_age>30</qty_ordered_age>
+            </general>
+        </meanbee_bestsellersort>
+    </default>
+
+    <phpunit>
+        <suite>
+            <modules>
+                <Meanbee_BestSellerSort />
+            </modules>
+        </suite>
+    </phpunit>
+
+</config>
