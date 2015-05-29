@@ -8,7 +8,6 @@ class Meanbee_BestSellerSort_Adminhtml_RecalculateController extends Mage_Adminh
     */
     public function indexAction()
     {
-        Mage::log('WHY', null, 'ashsmith.log', true);
         $timestamp = Mage::getSingleton('core/date')->gmtTimestamp()+10;
         $schedule = Mage::getModel('cron/schedule');
         $schedule->setJobCode('meanbee_bestsellersort_update')
