@@ -1,0 +1,92 @@
+<_>
+   <form_key>uPkpe26Fg5zcKgqG</form_key>
+   <name>Meanbee_BestSellerSort</name>
+   <channel>community</channel>
+   <version_ids>
+      <version_ids>2</version_ids>
+   </version_ids>
+   <summary>Adds Best Seller sort by to product listings</summary>
+   <description>Meanbee Best Seller Sort adds a new sort by option onto product listings, this new option allows your customer to sort by the best selling products based on your sales.
+
+The default date range used for best selling products is based on the past 30 days sales.</description>
+   <license>Community</license>
+   <license_uri/>
+   <version>1.0.1</version>
+   <stability>stable</stability>
+   <notes>Initial release</notes>
+   <authors>
+      <name>
+         <name>Meanbee</name>
+      </name>
+      <user>
+         <user>meanbee</user>
+      </user>
+      <email>
+         <email>hello@meanbee.com</email>
+      </email>
+   </authors>
+   <depends_php_min>5.2.13</depends_php_min>
+   <depends_php_max>6.0.0</depends_php_max>
+   <depends>
+      <package>
+         <name>
+            <name/>
+         </name>
+         <channel>
+            <channel/>
+         </channel>
+         <min>
+            <min/>
+         </min>
+         <max>
+            <max/>
+         </max>
+         <files>
+            <files>   </files>
+         </files>
+      </package>
+      <extension>
+         <name>
+            <name>Core</name>
+         </name>
+         <min>
+            <min/>
+         </min>
+         <max>
+            <max/>
+         </max>
+      </extension>
+   </depends>
+   <contents>
+      <target>
+         <target>magelocal</target>
+         <target>magecommunity</target>
+         <target>mageetc</target>
+         <target>magedesign</target>
+      </target>
+      <path>
+         <path/>
+         <path>Meanbee/BestSellerSort</path>
+         <path>modules/Meanbee_BestSellerSort.xml</path>
+         <path>adminhtml/default/default/template/meanbee/bestsellersort</path>
+      </path>
+      <type>
+         <type>file</type>
+         <type>dir</type>
+         <type>file</type>
+         <type>dir</type>
+      </type>
+      <include>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+      </include>
+      <ignore>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+      </ignore>
+   </contents>
+</_>

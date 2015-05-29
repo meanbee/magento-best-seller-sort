@@ -1,3 +1,4 @@
 app/code/community/Meanbee/BestSellerSort app/code/community/Meanbee/BestSellerSort
 app/design/adminhtml/default/default/template/meanbee/bestsellersort/ app/design/adminhtml/default/default/template/meanbee/bestsellersort
 app/etc/modules/* app/etc/modules/
+package.xml var/connect/Meanbee_BestSellerSort.xml
