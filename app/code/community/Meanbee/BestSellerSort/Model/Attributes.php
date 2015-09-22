@@ -37,7 +37,9 @@ class Meanbee_BestSellerSort_Model_Attributes extends Mage_Core_Model_Abstract
 
         foreach($soldCollection as $product) {
             $product->setData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED, -((int)$product->getData('ordered_qty')));
-            $resource->saveAttribute($product, Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
+            if($product->getSku() !== NULL) {
+                $resource->saveAttribute($product, Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
+            }
         }
 
         $this->_updateFlatProductTable(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
