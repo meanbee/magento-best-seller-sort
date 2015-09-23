@@ -37,7 +37,7 @@ class Meanbee_BestSellerSort_Model_Attributes extends Mage_Core_Model_Abstract
 
         foreach($soldCollection as $product) {
             $product->setData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED, -((int)$product->getData('ordered_qty')));
-            if($product->getSku() !== NULL) {
+            if ($product->getSku() !== null) {
                 $resource->saveAttribute($product, Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
             }
         }
