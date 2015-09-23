@@ -21,7 +21,9 @@ class Meanbee_BestSellerSort_Model_Attributes extends Mage_Core_Model_Abstract
         $productCollection = Mage::getResourceModel('catalog/product_collection');
 
         foreach($productCollection as $product) {
-            $product->setData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED, 0);
+            if (!is_int($product->getData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED))) {
+                $product->setData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED, 0);
+            }
             $resource->saveAttribute($product, Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
         }
 
@@ -38,6 +40,26 @@ class Meanbee_BestSellerSort_Model_Attributes extends Mage_Core_Model_Abstract
         foreach($soldCollection as $product) {
             $product->setData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED, -((int)$product->getData('ordered_qty')));
             $resource->saveAttribute($product, Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
+        }
+
+        /**
+         * Next loop through configurable products and set their sold counts to
+         * the negative sum of their associated products.
+         */
+        $configurableCollection = Mage::getResourceModel('catalog/product_collection')
+              ->addFieldToFilter('type_id', array('eq' => 'configurable'));
+
+        foreach ($configurableCollection as $parent) {
+            $childrenIds = $parent->getTypeInstance()->getUsedProductIds();
+            $total = 0;
+            $children = Mage::getResourceModel('catalog/product_collection')
+                  ->addAttributeToSelect(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED)
+                  ->addFieldToFilter('entity_id', array('in' => $childrenIds))
+                  ->load();
+            foreach ($children as $child) {
+                $total -= $child->getData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
+            }
+            $parent->setData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED, $total);
         }
 
         $this->_updateFlatProductTable(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
