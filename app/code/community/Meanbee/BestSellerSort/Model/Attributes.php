@@ -19,6 +19,7 @@ class Meanbee_BestSellerSort_Model_Attributes extends Mage_Core_Model_Abstract
          * - Avoids nulls being shown before all products when ordered ascendingly
          */
         $productCollection = Mage::getResourceModel('catalog/product_collection');
+        $productCollection->addAttributeToFilter(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED, array('neq' => 0));
 
         foreach($productCollection as $product) {
             $product->setData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED, 0);
