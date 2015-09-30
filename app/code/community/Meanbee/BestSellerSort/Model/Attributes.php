@@ -48,7 +48,7 @@ class Meanbee_BestSellerSort_Model_Attributes extends Mage_Core_Model_Abstract
          * the negative sum of their associated products.
          */
         $configurableCollection = Mage::getResourceModel('catalog/product_collection')
-              ->addFieldToFilter('type_id', array('eq' => 'configurable'));
+              ->addFieldToFilter('type_id', array('eq' => Mage_Catalog_Model_Product_Type_Configurable::TYPE_CODE));
 
         foreach ($configurableCollection as $parent) {
             $childrenIds = $parent->getTypeInstance()->getUsedProductIds();
