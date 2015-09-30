@@ -61,6 +61,7 @@ class Meanbee_BestSellerSort_Model_Attributes extends Mage_Core_Model_Abstract
                 $total -= $child->getData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
             }
             $parent->setData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED, $total);
+            $resource->saveAttribute($parent, Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
         }
 
         $this->_updateFlatProductTable(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
