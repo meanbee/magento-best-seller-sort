@@ -50,15 +50,21 @@ class Meanbee_BestSellerSort_Model_Attributes extends Mage_Core_Model_Abstract
         $configurableCollection = Mage::getResourceModel('catalog/product_collection')
               ->addFieldToFilter('type_id', array('eq' => Mage_Catalog_Model_Product_Type_Configurable::TYPE_CODE));
 
+        $childrenIds = array();
         foreach ($configurableCollection as $parent) {
-            $childrenIds = $parent->getTypeInstance()->getUsedProductIds();
-            $total = 0;
-            $children = Mage::getResourceModel('catalog/product_collection')
+            $childrenIds[$parent->getId()] = $parent->getTypeInstance()->getUsedProductIds();
+        }
+        $flatChildrenIds = array();
+        array_walk_recursive($childrenIds,
+                             function($id) use (&$flatChildrenIds) { $flatChildrenIds[] = $id; }
+                            );
+        $children = Mage::getResourceModel('catalog/product_collection')
                   ->addAttributeToSelect(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED)
-                  ->addFieldToFilter('entity_id', array('in' => $childrenIds))
-                  ->load();
-            foreach ($children as $child) {
-                $total -= $child->getData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
+                  ->addFieldToFilter('entity_id', array('in' => $flatChildrenIds));
+        foreach ($configurableCollection as $parent) {
+            $total = 0;
+            foreach ($childrenIds[$parent->getId()] as $childId) {
+                $total -= $children->getItemById($childId)->getData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
             }
             $parent->setData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED, $total);
             $resource->saveAttribute($parent, Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
