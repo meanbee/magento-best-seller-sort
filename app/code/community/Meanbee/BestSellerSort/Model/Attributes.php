@@ -33,6 +33,7 @@ class Meanbee_BestSellerSort_Model_Attributes extends Mage_Core_Model_Abstract
 
         /* @var $soldCollection Mage_Reports_Model_Mysql4_Product_Collection */
         $soldCollection = Mage::getResourceModel('reports/product_collection')
+              ->addFieldToFilter('sku', array('notnull' => true))
               ->addOrderedQty($this->_getFromDate($helper->getQtyOrderedAge()), $this->_getToday());
 
         foreach($soldCollection as $product) {
