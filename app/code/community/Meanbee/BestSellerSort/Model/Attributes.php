@@ -20,7 +20,7 @@ class Meanbee_BestSellerSort_Model_Attributes extends Mage_Core_Model_Abstract
          */
         $productCollection = Mage::getResourceModel('catalog/product_collection')
                            ->addAttributeToFilter(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED,
-                               array('neq' => 0)
+                               array(array('neq' => 0), array('null' => true)), 'left'
                            );
 
         foreach($productCollection as $product) {
