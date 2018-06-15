@@ -34,13 +34,17 @@ class Meanbee_BestSellerSort_Model_Attributes extends Mage_Core_Model_Abstract
          * the most popular products are shown first
          */
 
+        $productIds = Mage::getModel('catalog/product')->getCollection()->getAllIds();
         /* @var $soldCollection Mage_Reports_Model_Mysql4_Product_Collection */
         $soldCollection = Mage::getResourceModel('reports/product_collection')
             ->addOrderedQty($this->_getFromDate($helper->getQtyOrderedAge()), $this->_getToday());
 
         foreach($soldCollection as $product) {
-            $product->setData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED, -((int)$product->getData('ordered_qty')));
-            $resource->saveAttribute($product, Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
+            // check if the product still exists as it could have been removed in the meantime
+            if (in_array($product->getEntityId(), $productIds)) {
+                $product->setData(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED, -((int)$product->getData('ordered_qty')));
+                $resource->saveAttribute($product, Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
+            }
         }
 
         $this->_updateFlatProductTable(Meanbee_BestSellerSort_Helper_Data::ATTRIBUTE_NAME_QTY_ORDERED);
